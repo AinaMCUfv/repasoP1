@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -16,6 +17,8 @@ import java.util.Scanner;
 public class App 
 {
     public static Scanner teclado = new Scanner(System.in);
+
+    public static ArrayList<Videoteca> listadoVideotecas = new ArrayList<Videoteca>();
 
     public static void main( String[] args )
     {
