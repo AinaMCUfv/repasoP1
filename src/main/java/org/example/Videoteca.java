@@ -62,4 +62,14 @@ public class Videoteca {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return "Videoteca{" +
+                "nombreV='" + nombreV + '\'' +
+                ", ubicacion='" + ubicacion + '\'' +
+                ", listaPeliculas=" + listaPeliculas +
+                ", fecha=" + fecha +
+                '}';
+    }
 }

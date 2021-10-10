@@ -72,5 +72,18 @@ public class Pelicula {
     public void setImdb(int imdb) {
         this.imdb = imdb;
     }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "id=" + id +
+                ", estreno=" + estreno +
+                ", titulo='" + titulo + '\'' +
+                ", sinopsis='" + sinopsis + '\'' +
+                ", listaActores=" + listaActores +
+                ", genero='" + genero + '\'' +
+                ", imdb=" + imdb +
+                '}';
+    }
 }
 
