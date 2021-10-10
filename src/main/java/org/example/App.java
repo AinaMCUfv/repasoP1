@@ -73,12 +73,9 @@ public class App
                     v.addPelicula(listadoPelis);
                 }
 
-                //System.out.println(entry.getKey() + "=" + entry.getValue());
             }
 
             listadoVideotecas.add(v);
-
-            System.out.println(listadoVideotecas);
 
             // close reader
             reader.close();
