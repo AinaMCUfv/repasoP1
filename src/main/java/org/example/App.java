@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -56,10 +57,28 @@ public class App
             // convert JSON file to map
             Map<?, ?> map = gson.fromJson(reader, Map.class);
 
+            Videoteca v = new Videoteca();
+
             // print map entries
             for (Map.Entry<?, ?> entry : map.entrySet()) {
-                System.out.println(entry.getKey() + "=" + entry.getValue());
+
+                if(entry.getKey().equals("nombre")){
+                    v.setNombreV(entry.getValue().toString());
+                }else if(entry.getKey().equals("ubicacion")){
+                    v.setUbicacion(entry.getValue().toString());
+                }else if(entry.getKey().equals("fecha")){
+                    v.setFecha(new Date(entry.getValue().toString()));
+                }else if(entry.getKey().equals("peliculas")){
+                    ArrayList<Pelicula> listadoPelis = (ArrayList<Pelicula>) entry.getValue();
+                    v.addPelicula(listadoPelis);
+                }
+
+                //System.out.println(entry.getKey() + "=" + entry.getValue());
             }
+
+            listadoVideotecas.add(v);
+
+            System.out.println(listadoVideotecas);
 
             // close reader
             reader.close();

@@ -9,14 +9,18 @@ public class Videoteca {
     private ArrayList<Pelicula> listaPeliculas = new ArrayList<Pelicula>();
     private Date fecha;
 
+    public Videoteca(){
+
+    }
+
     public Videoteca(String nom, String ubi, Date fecha){
         this.nombreV = nom;
         this.ubicacion = ubi;
         this.fecha = fecha;
     }
 
-    public void addPelicula(Pelicula peli){
-        listaPeliculas.add(peli);
+    public void addPelicula(ArrayList<Pelicula> pelis){
+        listaPeliculas = pelis;
     }
 
     public void removePelicula(String tituloBorrar){
