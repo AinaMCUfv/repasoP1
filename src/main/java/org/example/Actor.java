@@ -2,22 +2,22 @@ package org.example;
 
 public class Actor {
 
-    private String nombreA;
+    private String nombre;
     private String link;
     private int genero;
 
     public Actor(String nomA, String link, int gen){
-        this.nombreA = nomA;
+        this.nombre = nomA;
         this.link = link;
         this.genero = gen;
     }
 
     public String getNombreA() {
-        return nombreA;
+        return nombre;
     }
 
     public void setNombreA(String nombreA) {
-        this.nombreA = nombreA;
+        this.nombre = nombreA;
     }
 
     public String getLink() {
@@ -39,7 +39,7 @@ public class Actor {
     @Override
     public String toString() {
         return "Actor{" +
-                "nombreA='" + nombreA + '\'' +
+                "nombreA='" + nombre + '\'' +
                 ", link='" + link + '\'' +
                 ", genero=" + genero +
                 '}';

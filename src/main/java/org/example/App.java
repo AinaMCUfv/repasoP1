@@ -74,17 +74,30 @@ public class App
     private static void opcion2(){
         for(int i = 0; i < listadoVideotecas.size(); i++){
             Videoteca v = listadoVideotecas.get(i);
-            System.out.println("La videoteca " + v.getNombre() + "se encuentra en " + v.getUbicacion() + " y se fundo en" +
+            System.out.println("--------------");
+            System.out.println("La videoteca " + v.getNombre() + " se encuentra en " + v.getUbicacion() + " y se fundo en " +
                     v.getFecha());
             for(int j = 0; j < v.getListaPeliculas().size(); j++){
-                Pelicula p = (Pelicula) v.getListaPeliculas().get(j);
-                System.out.println("Titulo pelicula: " + p.getTitulo());
-                System.out.println("Id pelicula: " + p.getId());
-                System.out.println("Estreno pelicula: " + p.getEstreno());
-                System.out.println("Sinopsis pelicula: " + p.getSinopsis());
-                System.out.println("Genero pelicula: " + p.getGenero());
-                System.out.println("Imdb pelicula: " + p.getImdb());
+                Pelicula p = v.getListaPeliculas().get(j);
+                System.out.println("\tTitulo pelicula: " + p.getTitulo());
+                System.out.println("\t\tId pelicula: " + p.getId());
+                System.out.println("\t\tEstreno pelicula: " + p.getEstreno());
+                System.out.println("\t\tSinopsis pelicula: " + p.getSinopsis());
+                System.out.println("\t\tGenero pelicula: " + p.getGenero());
+                System.out.println("\t\tImdb pelicula: " + p.getImdb());
+
+                ArrayList<Actor> listaActores = p.getListaActores();
+                for(int k = 0; k < listaActores.size(); k++){
+                    System.out.println("\t\t\t****");
+                    Actor actor = listaActores.get(k);
+                    System.out.println("\t\t\tNombre: " + actor.getNombreA());
+                    System.out.println("\t\t\tGenero: " + actor.getGenero());
+                    System.out.println("\t\t\tLink: " + actor.getLink());
+                }
+
+
             }
+
         }
     }
 

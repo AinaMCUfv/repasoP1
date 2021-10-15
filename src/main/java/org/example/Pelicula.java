@@ -7,7 +7,7 @@ public class Pelicula {
     private int estreno;
     private String titulo;
     private String sinopsis;
-    private ArrayList<Actor> listaActores = new ArrayList<Actor>();
+    private ArrayList<Actor> reparto = new ArrayList<Actor>();
     private String genero;
     private int imdb;
 
@@ -21,9 +21,12 @@ public class Pelicula {
     }
 
     public void addActor(Actor actor){
-        listaActores.add(actor);
+        reparto.add(actor);
     }
 
+    public ArrayList<Actor> getListaActores() {
+        return reparto;
+    }
 
     public int getId() {
         return id;
@@ -80,7 +83,7 @@ public class Pelicula {
                 ", estreno=" + estreno +
                 ", titulo='" + titulo + '\'' +
                 ", sinopsis='" + sinopsis + '\'' +
-                ", listaActores=" + listaActores +
+                ", listaActores=" + reparto +
                 ", genero='" + genero + '\'' +
                 ", imdb=" + imdb +
                 '}';
