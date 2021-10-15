@@ -37,6 +37,9 @@ public class App
                 case 2:
                     opcion2();
                     break;
+                case 3:
+                    opcion3();
+                    break;
                 default:
                     System.out.println("Opcion no valida\n");
                     break;
@@ -101,13 +104,44 @@ public class App
         }
     }
 
+    private static void opcion3(){
+        String peliculaAux;
+        boolean encontrado = false;
+        int i = 0;
+
+        System.out.println("Introduzca el nombre de la pelicula a buscar: ");
+        teclado.nextLine();
+        peliculaAux = teclado.nextLine();
+
+        while(encontrado != true && i < listadoVideotecas.size()){
+            int j = 0;
+
+            while(encontrado != true && j < listadoVideotecas.get(i).getListaPeliculas().size()){
+                if(listadoVideotecas.get(i).getListaPeliculas().get(j).getTitulo().equals(peliculaAux)){
+                    encontrado = true;
+                    System.out.println(listadoVideotecas.get(i).getListaPeliculas().get(j).getListaActores());
+                }else{
+                    j++;
+                }
+            }
+
+            if(encontrado == false){
+                i++;
+            }
+        }
+
+        if(encontrado == false){
+            System.out.println("Pelicula no encontrada en ninguna videoteca");
+        }
+    }
+
     public static int menu(){
         int opcion;
 
         System.out.println("Escoga una opcion:\n");
         System.out.println("1.- Leer fichero json:\n");
         System.out.println("2.- Mostrar datos:\n");
-        System.out.println("3.- Guardar fichero:\n");
+        System.out.println("3.- Buscar pelicula y mostrar actores:\n");
         System.out.println("4.- Salir:\n");
         opcion = teclado.nextInt();
 
