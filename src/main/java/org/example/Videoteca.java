@@ -4,32 +4,36 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Videoteca {
-    private String nombreV;
+    private String nombre;
     private String ubicacion;
-    private ArrayList<Pelicula> listaPeliculas = new ArrayList<Pelicula>();
-    private Date fecha;
+    private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+    private String fecha;
 
     public Videoteca(){
 
     }
 
-    public Videoteca(String nom, String ubi, Date fecha){
-        this.nombreV = nom;
+    public Videoteca(String nom, String ubi, String fecha){
+        this.nombre = nom;
         this.ubicacion = ubi;
         this.fecha = fecha;
     }
 
     public void addPelicula(ArrayList<Pelicula> pelis){
-        listaPeliculas = pelis;
+        peliculas = pelis;
+    }
+
+    public ArrayList<Pelicula> getListaPeliculas() {
+        return peliculas;
     }
 
     public void removePelicula(String tituloBorrar){
         boolean encontrado = false;
         int i = 0;
 
-        while(encontrado != true && i < listaPeliculas.size()){
-            if(listaPeliculas.get(i).getTitulo().equals(tituloBorrar)){
-                listaPeliculas.remove(i);
+        while(encontrado != true && i < peliculas.size()){
+            if(peliculas.get(i).getTitulo().equals(tituloBorrar)){
+                peliculas.remove(i);
                 encontrado = true;
 
                 System.out.println("Pelicula borrada de la lista");
@@ -43,12 +47,12 @@ public class Videoteca {
         }
     }
 
-    public String getNombreV() {
-        return nombreV;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreV(String nombreV) {
-        this.nombreV = nombreV;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getUbicacion() {
@@ -59,20 +63,20 @@ public class Videoteca {
         this.ubicacion = ubicacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
     @Override
     public String toString() {
         return "Videoteca{" +
-                "nombreV='" + nombreV + '\'' +
+                "nombre='" + nombre + '\'' +
                 ", ubicacion='" + ubicacion + '\'' +
-                ", listaPeliculas=" + listaPeliculas +
+                ", listaPeliculas=" + peliculas +
                 ", fecha=" + fecha +
                 '}';
     }

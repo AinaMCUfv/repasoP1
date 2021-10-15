@@ -2,14 +2,16 @@ package org.example;
 
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.Reader;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Hello world!
@@ -33,7 +35,7 @@ public class App
                     opcion1();
                     break;
                 case 2:
-
+                    opcion2();
                     break;
                 default:
                     System.out.println("Opcion no valida\n");
@@ -55,33 +57,34 @@ public class App
             Reader reader = Files.newBufferedReader(Paths.get("peliculas.json"));
 
             // convert JSON file to map
-            Map<?, ?> map = gson.fromJson(reader, Map.class);
+            //Videoteca v = gson.fromJson(reader, Videoteca.class);
+            Type tipoLista = new TypeToken<List<Videoteca>>(){}.getType();
+            listadoVideotecas = gson.fromJson(reader, tipoLista);
+            //System.out.println(listadoVideotecas);
 
-            Videoteca v = new Videoteca();
-
-            // print map entries
-            for (Map.Entry<?, ?> entry : map.entrySet()) {
-
-                if(entry.getKey().equals("nombre")){
-                    v.setNombreV(entry.getValue().toString());
-                }else if(entry.getKey().equals("ubicacion")){
-                    v.setUbicacion(entry.getValue().toString());
-                }else if(entry.getKey().equals("fecha")){
-                    v.setFecha(new Date(entry.getValue().toString()));
-                }else if(entry.getKey().equals("peliculas")){
-                    ArrayList<Pelicula> listadoPelis = (ArrayList<Pelicula>) entry.getValue();
-                    v.addPelicula(listadoPelis);
-                }
-
-            }
-
-            listadoVideotecas.add(v);
 
             // close reader
             reader.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    private static void opcion2(){
+        for(int i = 0; i < listadoVideotecas.size(); i++){
+            Videoteca v = listadoVideotecas.get(i);
+            System.out.println("La videoteca " + v.getNombre() + "se encuentra en " + v.getUbicacion() + " y se fundo en" +
+                    v.getFecha());
+            for(int j = 0; j < v.getListaPeliculas().size(); j++){
+                Pelicula p = (Pelicula) v.getListaPeliculas().get(j);
+                System.out.println("Titulo pelicula: " + p.getTitulo());
+                System.out.println("Id pelicula: " + p.getId());
+                System.out.println("Estreno pelicula: " + p.getEstreno());
+                System.out.println("Sinopsis pelicula: " + p.getSinopsis());
+                System.out.println("Genero pelicula: " + p.getGenero());
+                System.out.println("Imdb pelicula: " + p.getImdb());
+            }
         }
     }
 
