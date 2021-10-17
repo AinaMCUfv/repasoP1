@@ -7,6 +7,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -27,7 +30,7 @@ public class App
 
         opcion = menu();
 
-        while(opcion != 5){
+        while(opcion != 6){
             switch (opcion){
                 case 1:
                     opcion1();
@@ -40,6 +43,9 @@ public class App
                     break;
                 case 4:
                     opcion4();
+                    break;
+                case 5:
+                    opcion5();
                     break;
                 default:
                     System.out.println("Opcion no valida\n");
@@ -155,6 +161,24 @@ public class App
         }
     }
 
+    public static void opcion5(){
+        String nombreFichero;
+
+        System.out.println("Introduzca el nombre del fichero a guardar:");
+        nombreFichero = teclado.next();
+
+        Gson gson = new Gson();
+
+        try {
+            FileWriter fw = new FileWriter(nombreFichero);
+            gson.toJson(listadoVideotecas,fw);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static int menu(){
         int opcion;
 
@@ -163,7 +187,8 @@ public class App
         System.out.println("2.- Mostrar datos:\n");
         System.out.println("3.- Buscar pelicula y mostrar actores:\n");
         System.out.println("4.- Introduce videoteca y mostrar generos:\n");
-        System.out.println("5.- Salir:\n");
+        System.out.println("5.- Guardar en fichero:\n");
+        System.out.println("6.- Salir:\n");
         opcion = teclado.nextInt();
 
         return opcion;
