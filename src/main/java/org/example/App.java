@@ -11,12 +11,10 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLOutput;
 import java.util.*;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static Scanner teclado = new Scanner(System.in);
@@ -29,7 +27,7 @@ public class App
 
         opcion = menu();
 
-        while(opcion != 4){
+        while(opcion != 5){
             switch (opcion){
                 case 1:
                     opcion1();
@@ -39,6 +37,9 @@ public class App
                     break;
                 case 3:
                     opcion3();
+                    break;
+                case 4:
+                    opcion4();
                     break;
                 default:
                     System.out.println("Opcion no valida\n");
@@ -135,6 +136,25 @@ public class App
         }
     }
 
+    private static void opcion4(){
+        String nomVideo;
+        String gen;
+        int i = 0;
+        int j = 0;
+        System.out.println("Introduzca el nombre de la pelicula a buscar: ");
+        nomVideo = teclado.next();
+
+        for(i= 0; i < listadoVideotecas.size(); i++){
+            if(nomVideo.equals(listadoVideotecas.get(i).getNombre())){
+                for(j = 0; j< listadoVideotecas.get(i).getListaPeliculas().size(); j++){
+                    gen = listadoVideotecas.get(i).getListaPeliculas().get(j).getGenero();
+                    System.out.println(gen);
+                }
+
+            }
+        }
+    }
+
     public static int menu(){
         int opcion;
 
@@ -142,7 +162,8 @@ public class App
         System.out.println("1.- Leer fichero json:\n");
         System.out.println("2.- Mostrar datos:\n");
         System.out.println("3.- Buscar pelicula y mostrar actores:\n");
-        System.out.println("4.- Salir:\n");
+        System.out.println("4.- Introduce videoteca y mostrar generos:\n");
+        System.out.println("5.- Salir:\n");
         opcion = teclado.nextInt();
 
         return opcion;
